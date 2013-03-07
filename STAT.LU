@@ -1,0 +1,150 @@
+;;; --------------------------------------------------------------------------
+;;; - Stat.lu                                                 VARUNA 1.2     -
+;;; -                                                                        -
+;;; - utilitaires                                                            -
+;;; --------------------------------------------------------------------------
+;;; - Copyright Abstract, France 1993-2006                                   -
+;;; - under licence MIT Expat since 2006                                     -
+;;; --------------------------------------------------------------------------
+;;; CRE - 01/96
+
+(defvar LISTE-DEFS ())
+(defvar LISTE-DMDS ())
+(defvar LISTE-DEFVARS ())
+(defvar FICHIER-DEFS-MULTIPLES "multidef.txt")
+
+;;; <liste-fonctions>
+;;; retourne la liste des fonctions definies dans une liste de fichiers
+;;; <fichier-liste> contient la liste des fichiers des fichiers dans 
+;;; lesquels nous recherchons les definitions de fonctions, macros et defvar
+;;; ex de fichier <fichier-liste>:
+;;;   (
+;;;     i-sedit.ll
+;;;     m-noyau.ll
+;;;     ...
+;;;   )
+
+(defun liste-fonctions (fichier-liste fichier-resultat avec-arg)
+  (let
+    ((liste-fichiers))
+
+    (initialiser)
+    (with
+      ((inchan (openi fichier-liste)))
+      (untilexit EOF
+          (setq liste-fichiers (read)))
+      (close))
+    (mapc
+        (lambda (fich)
+          (let 
+            ((nom-fichier (string fich)))
+
+            (print "##### traitement du fichier: " nom-fichier)
+            (with
+              ((outchan (opena fichier-resultat)))
+              (print "*** " nom-fichier))
+            (close)
+            (liste-fonctions-fichier fich fichier-resultat avec-arg)))
+          liste-fichiers)))
+
+;;; <initialiser>
+;;; 
+
+(defun initialiser ()
+  (with
+    ((outchan (openo fichier-resultat))));; creer un nouveau fichier
+  (close)
+  ;; init des listes
+  (setq LISTE-DEFS ())
+  (setq LISTE-DMDS ())
+  (setq LISTE-DEFVARS ()))
+  
+
+;;; <liste-fonctions-fichier>
+;;; retourne la liste des <defun> qu'il y a dans un fichier passe en argument
+;;; le resultat est mis dans un fichier
+;;; si <avec-arg> est t on affiche aussi les arguments
+
+(defun liste-fonctions-fichier (fichier-source fichier-resultat avec-arg)
+  (let ((pck (in-package)))
+    (with ((inchan (openi fichier-source))
+           (outchan (if fichier-resultat (opena fichier-resultat))))
+      (untilexit EOF
+          (setq tampon (read))
+          (cond
+            ((equal (car tampon) 'defun)
+             (maj-liste-defuns tampon))
+            ((equal (car tampon) 'dmd)
+             (maj-liste-dmds tampon))
+            ((equal (car tampon) 'defvar)
+             (maj-liste-defvars  tampon))
+            ((equal (car tampon) 'in-package)
+             (in-package (cadr tampon)))
+            (t
+               )))
+        (close))
+    (in-package pck)))
+
+;;; <ecrire-arguments>
+;;; fonction qui ecrit la liste des arguments d'une fonction la definition
+;;; de celle-ci etant passee en parametre
+
+(defun ecrire-arguments (arguments)
+  (mapc
+      #'(lambda (arg)
+          (print "    - " arg))
+      arguments))
+
+;;; !! remarque: les 3 fonctions suivantes peuvent etre regroupees en une
+;;; seule (maj-liste-defuns, maj-liste-dmds, maj-liste-defvars).
+;;; 
+
+;;; <maj-liste-defuns>
+;;; mise a jour de la liste des fonctions de type "defun"
+
+(defun maj-liste-defuns (nouveau-def)
+  (let
+    ((nom-fonction (cadr nouveau-def))
+     (arguments (caddr nouveau-def)))
+
+    (print nom-fonction " (defun)")
+    (when avec-arg
+        (ecrire-arguments arguments))
+    (if (member nouveau-def LISTE-DEFS)
+      (with 
+        ((outchan ()))
+        (print "fct dupliquee: " nom-fonction))
+      (newl LISTE-DEFS nouveau-def))))
+    
+
+;;; <maj-liste-dmds>
+;;; mise a jour de la liste des macros
+
+(defun maj-liste-dmds (nouvelle-macro)
+  (let
+    ((nom-macro (cadr nouvelle-macro))
+     (arguments (caddr nouvelle-macro)))
+
+    (print nom-macro " (dmd)")
+    (when avec-arg
+        (ecrire-arguments arguments))
+    (if (member nouvelle-macro LISTE-DMDS)
+      (with 
+        ((outchan ()))
+        (print "macro dupliquee: " nom-macro))
+      (newl LISTE-DMDS nouvelle-macro))))
+
+
+(defun maj-liste-defvars (nouveau-defvar)
+  (let
+    ((nom-defvar (cadr nouveau-defvar))
+     (arguments (caddr nouveau-defvar)))
+
+    (print nom-defvar " (defvar)")
+    (if (member nouveau-defvar LISTE-DEFVARS)
+      (with 
+        ((outchan ()))
+        (print "defvar dupliquee: " nom-defvar))
+      (newl LISTE-DEFVARS nouveau-defvar))))
+
+

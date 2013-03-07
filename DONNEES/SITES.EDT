@@ -1,0 +1,8 @@
+(site 
+   (code 'site1)
+   (libelle "Franck")
+   (type 'secondaire)
+   (numero-dd "2f4b12d2")
+   (types-cours '(tc0 tc1))
+   (types-salles '(salle))
+)

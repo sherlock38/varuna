@@ -1,0 +1,22 @@
+;;; --------------------------------------------------------------------------
+;;; - Salles.lu                                                 VARUNA 1.2   -
+;;; -                                                                        -
+;;; - lancement du moteur des salles en interprete                           -
+;;; --------------------------------------------------------------------------
+;;; - Copyright Abstract, France 1993-2006                                   -
+;;; - under licence MIT Expat since 2006                                     -
+;;; --------------------------------------------------------------------------
+
+
+(print (current-directory))
+(print "on charge le moteur des salles en interpre'te'")
+
+;;; le moteur de salles
+
+(load "ms-conce.ll")
+(load "ms-lire.ll")
+(load "ms-ecrire.ll")
+(load "ms-util.ll")
+(load "ms-noyau.ll")
+
+

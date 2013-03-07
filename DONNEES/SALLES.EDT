@@ -1,0 +1,10 @@
+; Copyright Abstract sarl 1993 - 2006
+; Licence MIT Expat since 2006
+
+(salle 
+   (code 's42)
+   (libelle "Salle")
+   (capacite 500)
+   (type 'salle)
+   (commentaires '(""))
+)

@@ -1,0 +1,11 @@
+; Copyright Abstract sarl 1993 - 2006
+; Licence MIT Expat since 2006
+
+(prof 
+   (code 'p63)
+   (libelle "DUPONT")
+   (civilite "M.")
+   (cours '(c4))
+   (dispo '(((480 . 1320) (1920 . 2760) (3360 . 4200) (4800 . 5640) (6240 . 7080) (7680 . 8520) (9120 . 9960)) (1 . 22)))
+   (commentaires '(""))
+)

@@ -1,0 +1,35 @@
+;;; --------------------------------------------------------------------------
+;;; - Moteur.lu                                                 VARUNA 1.2   -
+;;; -                                                                        -
+;;; - lancement du moteur en interprete                                      -
+;;; --------------------------------------------------------------------------
+;;; - Copyright Abstract, France 1993-2006                                   -
+;;; - under licence MIT Expat since 2006                                     -
+;;; --------------------------------------------------------------------------
+
+
+(print (current-directory))
+(print "on charge le moteur en interpre'te'")
+
+;;; Utilitaires specifiques MOTEUR
+
+(load "m-utilit.ll")
+
+
+;;; MOTEUR 
+
+(load "m-vars.ll")                      ; definition des variables
+(load "m-concep.ll")                   ; definition du concept <rect>
+
+(load "m-ecrire.ll")                   ; fichier d'ecriture            
+(load "m-lire.ll")                      ; fichier de lecture
+
+(load "m-contr.ll")                     ; definition et pose des contraintes
+(load "m-noyau.ll")                     ; noyau du moteur
+
+
+
+;(defun #:tclass:rect (objet)
+;  (prin (code-rect objet)))
+
+

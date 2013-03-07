@@ -1,0 +1,81 @@
+;;; --------------------------------------------------------------------------
+;;; - uvaruna.ll                                                VARUNA 1.12  -
+;;; - Module des Utilitaires generaux                                        -
+;;; - Utilitaires specifiques a Varuna Generaux                              -
+;;; --------------------------------------------------------------------------
+;;; - Copyright Abstract, France 1993-2006                                   -
+;;; - under licence MIT Expat since 2006                                     -
+;;; - Creation:  Octobre 94                                                  -
+;;; - Derniere mise a jour pour version 1.12:: Octobre 94                    -
+;;; - Build 1.12.01/ 09.06.95 / JH MO                                        -
+;;; --------------------------------------------------------------------------
+
+
+;;; UTILITAIRES SUR NUMERO DE VERSION ET BUILD
+
+(when (probefile "uvaruna.cfg") (load "uvaruna.cfg"))
+
+(defun varuna-version l
+  (if 
+    (null l)
+    VARUNA-NUMERO-VERSION
+    (affecter 'VARUNA-NUMERO-VERSION (car l))))
+
+(defun varuna-build l
+  (if
+    (null l)
+    VARUNA-NUMERO-BUILD
+    (affecter 'VARUNA-NUMERO-BUILD (add1 VARUNA-NUMERO-BUILD))))
+
+
+;;; AJT (27/03/95) MO
+;;; ajout d'un deletefile pour pallier l'imcompatibilite de la 15.26 sur le 
+;;; copyfile
+;;; CHG (29/03/95) MO
+;;; release ILOG corrigeant -a priori- cette incompatibilite
+
+
+(defun affecter (var val)
+  (let ((nom-fichier "uvaruna.cfg")
+        (nom-backup "uvaruna.cfs")
+        (a ())
+        (pl (printlevel))
+        (rm (rmargin)))
+      
+       (printlevel 100) 
+       (rmargin 1000) 
+       ;;(deletefile nom-backup)
+       (copyfile nom-fichier nom-backup)
+       (with 
+         ((inchan (openi nom-backup))
+          (outchan (openo nom-fichier)))
+         (untilexit EOF
+         (setq a (read))
+         (if 
+           (and (eq (car a) 'defvar) (eq (cadr a) var))
+           (print `(defvar ,var ,val))
+           (print a))))
+       (close)
+       (load "uvaruna.cfg")
+       (printlevel pl)
+       (rmargin rm)
+       val))   
+        
+          
+;;; UTILITAIRES SUR LES DATES COURANTES POUR VARUNA
+
+
+(defun formater-date-varuna (date-courante)
+  (catenate
+    (vref date-courante 2) "."
+    (vref date-courante 1) "."
+    (substring (vref date-courante 0) 2 )))
+
+
+(defun formater-heure-varuna (date-courante)
+  (catenate
+    (vref date-courante 3) ":" 
+    (vref date-courante 4)))
+ 
+  
+

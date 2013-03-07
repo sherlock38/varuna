@@ -1,0 +1,36 @@
+;;; --------------------------------------------------------------------------
+;;; - Utilit.lu                                                 VARUNA 1.2   -
+;;; -                                                                        -
+;;; - chargement des utilitaires Varuna Lisp                                 -
+;;; --------------------------------------------------------------------------
+;;; - Copyright Abstract, France 1993-2006                                   -
+;;; - under licence MIT Expat since 2006                                     -
+;;; --------------------------------------------------------------------------
+
+
+(print (current-directory))
+(print "on charge les utilitaires en interpre'te'")
+
+
+;; VARIABLES GLOBALES
+
+(load "vars.ll")
+
+
+;; UTILITAIRES LISP
+
+
+(load "ulisp.ll")
+(load "temps.ll")
+(load "zones.ll")
+
+
+
+;; UTILITAIRES VARUNA
+
+(load "dispo.ll")
+(load "erreur.ll")
+(load "ecole.ll")
+(load "io.ll")
+
+

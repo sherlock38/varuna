@@ -1,0 +1,77 @@
+;;; --------------------------------------------------------------------------
+;;; - Inter.lu                                                  VARUNA 1.10  -
+;;; -                                                                        -
+;;; - lancement de l'interface en interprete                                 -
+;;; --------------------------------------------------------------------------
+;;; - Copyright Abstract, France 1993-2006                                   -
+;;; - under licence MIT Expat since 2006                                     -
+;;; --------------------------------------------------------------------------
+
+(print "interface interpretee")
+
+(current-directory)
+
+;; OBJETS AIDA
+(load "i-hedit.ll")
+(load "i-iedit.ll")
+(load "i-sedit.ll")
+(load "i-vappli.ll")
+(load "i-vedit.ll")
+(load "i-vtype.ll")
+(load "i-obmenu.ll")
+(load "i-select.ll")
+(load "i-enum.ll")
+(load "i-bool.ll")
+(load "i-ledit.ll")
+(load "i-dispo.ll")
+(load "i-detect.ll")
+(load "i-owner.ll")
+(load "i-tedit.ll")
+(load "i-hmedit.ll")
+
+;; UTILITAIRES AIDA
+(load "i-msg.ll")
+(load "i-m-resa.ll")
+(load "i-util.ll")
+(load "i-dialog.ll")
+(load "i-boutons.ll")
+(load "i-m-resa.ll")
+(load "i-string.ll")
+(load "i-objets.ll")
+
+
+;; UTILITAIRES INTERFACE VARUNA
+(load "i-resa.ll")
+(load "i-vars.ll")
+(load "i-udata.ll")
+(load "i-datab.ll")
+(load "i-lire.ll")
+(load "i-ecrire.ll")
+(load "i-menu.ll")
+(load "i-input.ll")
+(load "i-ecole.ll")
+
+;; LES APPLIS
+(load "i-appli.ll")
+(load "i-uresa.ll")
+
+;; LES ACTIONS DE MENUS
+
+(load "i-dir.ll")
+(load "i-mod.ll")
+(load "i-aff.ll")
+(load "i-contr.ll")
+(load "i-sortie.ll")
+
+(load "i-edt.ll")
+(load "i-grid.ll")
+(load "i-don.ll")
+(load "i-gene.ll")
+(load "i-err.ll")
+
+;; MODULES SEPARES
+;(load "ie-main.ll")
+(load "reseau.ll")
+(load "i-contro.ll")
+(load "i-depl.ll")
+

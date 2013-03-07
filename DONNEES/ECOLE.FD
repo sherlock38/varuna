@@ -1,0 +1,13 @@
+(ecole 
+   (libelle-ecole "DEUG MODULAIRE")
+   (unite-temps 10)
+   (param-chevauchement 1)
+   (param-chevauchement-max 3)
+   (dispo-ecole '(((480 . 1320) (1920 . 2760) (3360 . 4200) (4800 . 5640) (6240 . 7080) (7680 . 7920)) (1 . 26)))
+   (horaire-cumule-pause ())
+   (semaines-debut-ecole '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25))
+   (liste-moments-debut-ecole '((480 600 720 840 960 1080 1200 1920 2040 2160 2280 2400 2520 2640 3360 3480 3600 3720 3840 3960 4080 4800 4920 5040 5160 5280 5400 5520 6240 6360 6480 6600 6720 6840 6960 7680 7800)))
+   (liste-codes-types-cours '(tc0))
+   (liste-libelles-types-cours '("normal"))
+   (grain-dispo 30)
+)

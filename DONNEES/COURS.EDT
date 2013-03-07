@@ -1,0 +1,19 @@
+; Copyright Abstract sarl 1993 - 2006
+; Licence MIT Expat since 2006
+
+(cours 
+   (instant-trouve ())
+   (code 'c4)
+   (libelle "foo")
+   (duree 120)
+   (type 'tc0)
+   (type-salle 'salle)
+   (audience 10)
+   (nb-seances 2)
+   (dispo '(((480 . 1320) (1920 . 2760) (3360 . 4200) (4800 . 5640) (6240 . 7080) (7680 . 7920)) (1 . 22)))
+   (fige ())
+   (salle-figee ())
+   (commentaires '(""))
+   (salle-trouvee ())
+   (salle-figee-reelle ())
+)
