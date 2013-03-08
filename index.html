@@ -20,7 +20,7 @@
     <header>
       <div class="inner">
         <h1>Varuna</h1>
-        <h2>(vieux) programmes pour résoudre des emplois du temps</h2>
+        <h2>(vieux) programmes <br />pour résoudre des emplois du temps</h2>
         <a href="https://github.com/sherlock38/varuna" class="button"><small>Voir le projet sur</small>GitHub</a>
       </div>
     </header>
@@ -29,21 +29,38 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h3>Bienvenue</h3>
-            <p></p>
+            <p>
+Varuna est un logiciel édité par la société abstract en France entre 1993 et 2006. Son code a été libéré sous licence <a href"http://fr.wikipedia.org/wiki/Licence_MIT#Mod.C3.A8le_de_la_licence_Expat" alt="MIT Expat">MIT Expat</a>en 2006 par décision des associés (Olivier Maas, Manfred Olm et Pascal Rivière) avant la cessation d'activité de la société en 2008.
+Varuna est un ensemble de programmes permettant de générer de façon automatique ou assistée des emplois du temps pour les grandes écoles et les universités. Varuna a été installé et utilisé dans de nombreuses universités et grandes écoles françaises : assas, jussieu, joseph fourier, talence, esiee...
+Le modèle de données et l’heuristique (inventée par Pascal Riviere) sont les deux atouts de ce logiciel.
+</p>
+<h3>les programmes</h3>
+Varuna est organisé en plusieurs composants :
+<ul>
+<li><em>varuna moteur</em>, écrit en lelisp, reposant sur une heuristique inventée par Pascal Rivière et le moteur de propagation par contraintes pecos (le lisp et pecos sont des librairies éditées par Ilog)</li>
+<li><em>varuna interface</em>, écrite en lelisp et utilisant les librairies aida et masai (aida et masai sont des librairies éditées par ilog)</li>
+<li><em>vgraphe</em>, un composant écrit en c++ permettant de générer des graphes de contraintes autour des emplois du temps</li>
+<li><em>varnet</em>, un composant écrit en c++ d'affichage web des emplois du temps</li>
+<li><em>vtrans</em>, un composant écrit en c++ de transfert de données d'une année sur l'autre</li>
+<li><em>vtraceur</em>, un composant écrit en c++ de traçage des modifications</li>
+<li><em>vimport</em>, vexport, des composants écrit en c++ d'import et d'export des données</li>
+<li><em>vprint</em>, un composant écrit en c++ de conversion des éditions varuna en postscript générique</li>
+<li><em>varutils</em>, des programmes écrits en lelisp utiles pour l'analyse des problèmes pendant la modélisation.</li>
+</ul>
         </section>
         <aside id="sidebar">
           <a href="https://github.com/sherlock38/varuna/zipball/core" class="button">
-            <small>Télécharger varuna</small>
+            <small>Sources varuna</small>
             fichier .zip
           </a>
           <a href="https://github.com/sherlock38/varuna/tarball/master" class="button">
-            <small>Télécharger varuna</small>
+            <small>Sources varuna</small>
             fichier .tar.gz
           </a>
 
           <p class="repo-owner"><a href="https://github.com/sherlock38/varuna"></a> est maintenu par <a href="https://github.com/sherlock38">sherlock38</a>.</p>
 
-          <p>This page a été généré par le module <a href="pages.github.com">GitHub Pages</a> à l'aide du thème développé par <a href="http://twitter.com/jasonlong">Jason Long</a>. Merci à eux.</p>
+          <p>Cette page a été générée par le module <a href="pages.github.com">GitHub Pages</a> à l'aide du thème développé par <a href="http://twitter.com/jasonlong">Jason Long</a>. Merci à eux.</p>
         </aside>
       </div>
     </div>
